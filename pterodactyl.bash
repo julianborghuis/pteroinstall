@@ -25,12 +25,12 @@ cp .env.example .env
 composer install --no-dev --optimize-autoloader
 php artisan key:generate --force
 php artisan p:environment:database --host=127.0.0.1 --port=3306 --database=panel --username=pterodactyl --password=$MYSQL_PASSWORD
-php artisan p:environment:setup -n --author=system@mc-node.net --url=http://$FQDN --timezone=Europe/Amsterdam --cache=redis --session=database --queue=redis --redis-host=127.0.0.1 --redis-$
+php artisan p:environment:setup -n --author=info@cmfm.nl --url=http://$FQDN --timezone=Europe/Amsterdam --cache=redis --session=database --queue=redis --redis-host=127.0.0.1 --redis-$
 sudo systemctl enable --now redis-server
 sed -i -e "s/MAIL_DRIVER=smtp/MAIL_DRIVER=log/g" /var/www/pterodactyl/.env
 php artisan migrate --seed --force
-php artisan p:user:make --email=admin@gmail.com --username=admin --name-first=admin --name-last=admin --password=admin --admin=1
-php artisan p:location:make --short=Meppel.Hostedbymc-node --long="Gehost bij mc-node."
+php artisan p:user:make --email=julian@kpnmail.nl --username=admin --name-first=admin --name-last=admin --password=admin --admin=1
+php artisan p:location:make --short=cmfm --long="cmfm."
 chown -R www-data:www-data *
 curl -o /etc/systemd/system/pteroq.service https://raw.githubusercontent.com/Fabian-Ser/pterodactylinstallscript/master/pteroq.service
 sudo systemctl enable --now pteroq.service
